@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    
+    <script src="app.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    
+</head>
+
+<body ng-controller='mainCtrl'>
+    <p style="color:darkblue; margin: 20px; font-size: 16px">U polje za tekst unosi se ime, i zatim se pritisne dugme za potvrdu unosa. Zatim se unosi naredno ime, i opet potvrdjuje unos. Kada se zavrsi sa unosom svih imena, pritiska se dugme obracun. Ono otvara dialog u kome nam ispisuje koliko smo imena unjeli i za svako uneseno ime broj unosenja istog. </p>
+    <br><br>
+    <p>Unesi ime u polje ispod: <input type="text" ng-model="unos" class="form-control"></p>
+    
+    <p><button ng-click ="unesi()" class="btn btn-outline-secondary">Unosenje</button> Pritisni ovo dugme kada zavrsis sa unosom imena.</p>
+    <br>    
+    <br>
+    <!-- Trigger the modal with a button -->
+    <button ng-click="obracun()" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="margin: 20px 50px">Obracun</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+        <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Popis</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Broj unjetih imena je {{imena.length}}.</p>
+                    <p ng-repeat="ime in imenaBezPonavljanja">Ime {{ime}} je uneseno {{brojaci[imenaBezPonavljanja.indexOf(ime)]}} puta.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Zatvori</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
